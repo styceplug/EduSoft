@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "162678338277",
+    "project_id": "school-management-3054c",
+    "storage_bucket": "school-management-3054c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162678338277:android:78724321e0d432df44da0c",
+        "android_client_info": {
+          "package_name": "com.project.schoolmanage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9s9zFS9PS4F7eIWu_o3RIhtmdaD1T9fU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162678338277:android:6105e8be44760b5b44da0c",
+        "android_client_info": {
+          "package_name": "com.project.schoolmanagement.school_management"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9s9zFS9PS4F7eIWu_o3RIhtmdaD1T9fU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
