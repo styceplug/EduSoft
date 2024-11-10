@@ -42,7 +42,7 @@ class FirestoreDatabase {
 
       // Add the post to Firestore
       await posts.add({
-        'PostUsername': postUsername,
+        'PostUsername': user!.email,
         'PostMessage': message,
         'TimeStamp': Timestamp.now()
       });
