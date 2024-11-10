@@ -33,14 +33,20 @@ class FirestoreDatabase {
 
 //post a message
   Future<void> addPosts(String message) async {
-    final userDoc = await FirebaseFirestore.instance.collection('Users').doc(user!.uid).get();
-    final username = userDoc.data()?['Username'] ?? 'Unknown User';
+    if(user != null){
+      // Get the user document
+      final userDoc = await FirebaseFirestore.instance.collection('Users').doc(user!.uid).get();
 
-    await posts.add({
-      'Username': user!.email,
-      'PostMessage': message,
-      'TimeStamp': Timestamp.now()
-    });
+      // Retrieve the username if it exists
+      final postUsername = userDoc.data()?['Username'] ?? 'Unknown User';
+
+      // Add the post to Firestore
+      await posts.add({
+        'PostUsername': postUsername,
+        'PostMessage': message,
+        'TimeStamp': Timestamp.now()
+      });
+    }
   }
 
 //read posts from firebase

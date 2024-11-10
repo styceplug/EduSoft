@@ -57,15 +57,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
           .createUserWithEmailAndPassword(
           email: userController.text, password: cr8PassController.text);
 
+      /*//Get UID of Registered user
+
+      String uid = userCredential.user!.uid;
+      String name = nameController.text;
+      String? email = userCredential.user!.email;
+
+      //save additional details
+      await FirebaseFirestore.instance.collection('Users').doc(uid).set({
+            'uid': uid,
+            'email': email,
+            'name': name
+      });*/
+
+
 
       //create user documents and add to firestore
-      createUserDocument(userCredential);
+      await createUserDocument(userCredential);
 
 
       //pop loading circle
-      if(context.mounted)Navigator.pop(context);
+      if (context.mounted) Navigator.pop(context);
 
       //display success message
+      print('User registered and details saved in Firestore');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('User Successfully Created'),
@@ -76,6 +91,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
       Get.toNamed(AppRoutes.floatingMenu);
     } on FirebaseAuthException catch (e) {
+      print('Registration failed: $e');
+
       //pop loading circle
       Navigator.pop(context);
       //display error to user
@@ -91,12 +108,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   //create user document and collect in firestore
   Future<void> createUserDocument(UserCredential? userCredential) async {
-    if (userCredential != null && userCredential.user !=null) {
+    if (userCredential != null && userCredential.user != null) {
+      String uid = userCredential.user!.uid;
       await FirebaseFirestore.instance.collection("Users").doc(
           userCredential.user!.email).set(
           {
             'email': userCredential.user!.email,
-            'username': nameController.text
+            'Username': nameController.text,
+            'uid': uid
           });
     }
   }

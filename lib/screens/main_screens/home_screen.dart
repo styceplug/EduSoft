@@ -171,14 +171,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         final post = posts[index];
                         //get data from each post
                         String message = post['PostMessage'];
-                        String userEmail = post['Username'];
+                        String userEmail = post['PostUsername'];
                         Timestamp timestamp = post['TimeStamp'];
 
                         //return as list tile
                         return Padding(
                           padding: EdgeInsets.only(
                               // left: Dimensions.width10,
-                              bottom: Dimensions.height10),
+                              bottom: Dimensions.height10,
+                              right: Dimensions.width10),
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(Dimensions.radius10),
